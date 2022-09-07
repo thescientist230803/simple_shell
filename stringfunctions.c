@@ -5,32 +5,31 @@
  *
  * @dest: points to the token exctracted path member variable
  * @src: points to the user input
- * Return: an array of characters containing the concatenated path and user input
+ * Return: an array of characters containing the concatenated path
  */
 
 char *_strcatpath(char *dest, char *src)
 {
-    int i;
-    int j;
-    char *concat;
-    concat = NULL;
-    i = _strlen(dest);
-    i+=_strlen(src);
-    concat = malloc(sizeof(char) * (i+2));
-    for(j = 0; dest[j] != '\0'; j++)
-    {
-        concat[j]=dest[j];
-    }
-    concat[j]='/';
-    j+=1;
-    for( i=0;src[i] != '\0';i++)
-    {
-        concat[j]=src[i];
-        j++;
-    }
-    concat[j]='\0';
-
-    return (concat);
+int i;
+int j;
+char *concat;
+concat = NULL;
+i = _strlen(dest);
+i += _strlen(src);
+concat = malloc(sizeof(char) * (i + 2));
+for (j = 0; dest[j] != '\0'; j++)
+{
+concat[j] = dest[j];
+}
+concat[j] = '/';
+j += 1;
+for (i = 0; src[i] != '\0'; i++)
+{
+concat[j] = src[i];
+j++;
+}
+concat[j] = '\0';
+return (concat);
 
 }
 
@@ -44,12 +43,11 @@ char *_strcatpath(char *dest, char *src)
 
 int _strlen(char *s1)
 {
-    int i;
-    for (i = 0; s1[i] != '\0';i++)
-    {
-
-    }
-    return(i);
+int i;
+for (i = 0; s1[i] != '\0'; i++)
+{
+}
+return (i);
 }
 
 /**
@@ -61,20 +59,20 @@ int _strlen(char *s1)
 
 int countwords(char *buf)
 {
-    int count = 0, i , searchflag = 1;
-    for (i = 0; buf[i] ; i++ )
-    {
-        if (searchflag == 1 && buf[i] != ' ')
-        {
-            count += 1;
-            searchflag = 0;
-        }
-        if (buf[i + 1] == ' ')
-        {
-            searchflag = 1;
-        }
-    }
-    return (count);
+int count = 0, i, searchflag = 1;
+for (i = 0; buf[i] ; i++)
+{
+if (searchflag == 1 && buf[i] != ' ')
+{
+count += 1;
+searchflag = 0;
+}
+if (buf[i + 1] == ' ')
+{
+searchflag = 1;
+}
+}
+return (count);
 }
 
 /**
@@ -82,24 +80,24 @@ int countwords(char *buf)
  *
  * @s1: points to first string to be compared
  * @s2: points to the second string to be compared
- * Returns: an integer 0 if strings are equal
+ * Return: an integer 0 if strings are equal
  */
 
-int _strcmp(char *s1,char *s2)
+int _strcmp(char *s1, char *s2)
 {
-    while (*s1 != '\0' && *s2 != '\0' && *s1 == *s2)
-    {
-        s1++;
-        s2++;
-    }
-    if( *s1 == *s2)
-    return (0);
-    else
-    return (*s1 - *s2);
+while (*s1 != '\0' && *s2 != '\0' && *s1 == *s2)
+{
+s1++;
+s2++;
+}
+if (*s1 == *s2)
+return (0);
+else
+return (*s1 - *s2);
 }
 
 /**
- * strcpy - duplicates a string
+ * _strcpy - duplicates a string
  *
  * @src: pointer to string to duplicate
  * Return: pointer to the duplicated string
@@ -107,20 +105,20 @@ int _strcmp(char *s1,char *s2)
 
 char *_strcpy(char *src)
 {
-    int i;
-    char *dupstr;
-    if (src == NULL)
-        return (NULL);
-    for (i = 0; src[i] != '\0'; i++)
-    {}
-    dupstr = malloc (sizeof(char ) * (i +1));
-    i = 0;
-    if (dupstr == NULL)
-        return (NULL);
-    for (i = 0; src[i]!= '\0'; i++)
-    {
-        dupstr[i]=src[i];
-    }
-    dupstr[i]='\0';
-    return (dupstr);
+int i;
+char *dupstr;
+if (src == NULL)
+return (NULL);
+for (i = 0; src[i] != '\0'; i++)
+{}
+dupstr = malloc(sizeof(char) * (i + 1));
+i = 0;
+if (dupstr == NULL)
+return (NULL);
+for (i = 0; src[i] != '\0'; i++)
+{
+dupstr[i] = src[i];
+}
+dupstr[i] = '\0';
+return (dupstr);
 }
