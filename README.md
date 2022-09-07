@@ -1,4 +1,4 @@
-SIMPLE SHELL PROJECT
+IMPLE SHELL PROJECT
 
 A collaboration project.
 Contributors Ian Gitau and Oluwaferanmi Idowu
