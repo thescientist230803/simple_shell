@@ -4,54 +4,64 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <errno.h>
+#include <stddef.h>
 #include <sys/stat.h>
-#include <fcntl.h>
-#include <string.h>
 #include <signal.h>
+
+int _putchar(char c);
+void _puts(char *str);
+int _strlen(char *s);
+char *_strdup(char *str);
+char *concat_all(char *name, char *sep, char *value);
+
+char **splitstring(char *str, const char *delim);
+void execute(char **argv);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+
 
 extern char **environ;
 
-int prompt(void);
+/**
+ * struct list_path - Linked list containing PATH directories
+ * @dir: directory in path
+ * @p: pointer to next node
+ */
+typedef struct list_path
+{
+	char *dir;
+	struct list_path *p;
+} list_path;
 
-char *_read(void);
 
-char *userinput(void);
+char *_getenv(const char *name);
+list_path *add_node_end(list_path **head, char *str);
+list_path *linkpath(char *path);
+char *_which(char *filename, list_path *head);
 
-char *getfullpath(char *av, char *PATH);
+/**
+ * struct mybuild - pointer to function with corresponding buildin command
+ * @name: buildin command
+ * @func: execute the buildin command
+ */
+typedef struct mybuild
+{
+	char *name;
+	void (*func)(char **);
+} mybuild;
 
-char **tokenize(char *buf);
+void(*checkbuild(char **arv))(char **arv);
+int _atoi(char *s);
+void exitt(char **arv);
+void env(char **arv);
+void _setenv(char **arv);
+void _unsetenv(char **arv);
 
-/* String funcions*/
-
-int _strcmp(char *s1, char *s2);
-
-char *_strcatpath(char *dest, char *src);
-
-int _strlen(char *s1);
-
-int countwords(char *buf);
-
-char *_strcpy(char *src);
-
-char *_pathexctract(char *path);
-
-char *_fullpathbuf(char **av, char *path_member);
-
-char *_getenv(const char *path);
-
-int _envstrcmp(const char *s1, const char *s2);
-
-int _checkbuiltins(char **av, char *buf, int exitstatus);
-
-void _env(void);
-
-void _puts(char *str);
-
-int _putchar(char c);
-
-int _forkprocess(char **av, char *buf, char *fullpathbuf);
+void freearv(char **arv);
+void free_list(list_path *head);
 
 
 #endif
