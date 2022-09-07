@@ -36,11 +36,7 @@ if (_checkbuiltins(av, buf, exitstatus) == 1)
 {
 continue;
 }
-if (access(fullpathbuf, F_OK) == 0)
-{
 exitstatus = _forkprocess(av, buf, fullpathbuf);
-}
-
 }
 }
 
